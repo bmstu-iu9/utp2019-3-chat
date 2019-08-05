@@ -3,9 +3,11 @@ const fs = require('fs');
 const path = require('path');
 
 const { PORT } = require('./config');
-
+const db = require('./db/db');
+console.log();
+db.setNewUser('test', 'pas');
 function urlChecker(req, res, url = null) {
-    //console.log(req.url)
+
     let filePath;
     if (url !== null)
         filePath = path.join(__dirname, 'public', url);
@@ -21,6 +23,7 @@ function urlChecker(req, res, url = null) {
             break;
         default: contentType = 'text/html';
     }
+
     if (!ext || (!url && (ext === '.html')))            // защита от обхода страницы регистрации\входа пользователя
         filePath = path.join(__dirname, 'public', 'login.html');
     fs.readFile(filePath, (err, content) =>{ //принимает запрос из браузера на страницу/файл, проверяет эту страницу\файл на сервере  и возвращает его (или ошибку)
