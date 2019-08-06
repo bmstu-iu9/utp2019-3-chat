@@ -6,7 +6,6 @@ const db = require('./db/db');
 const { PORT } = require('./config');
 
 function urlChecker(req, res, url = null) {//роутинг
-
     let filePath;
     if (url !== null) {
         filePath = path.join(__dirname, 'public', url);

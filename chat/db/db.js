@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const pathDbUsers = path.join(__dirname, 'users.txt');
+const pathDbChat = path.join(__dirname, 'chat.txt');
 
 const searchLogin = function (login, log = false) {
     let users = fs.readFileSync(pathDbUsers, 'utf-8').split('\n');
@@ -41,7 +42,17 @@ const setNewUser = function (login, password, log = false){
     }
 };
 
+const setMessage = function (obj) {
+    fs.appendFile(pathDbChat, obj + '\n', err => '');
+};
+
+const getMessage = function (obj) {
+    return fs.readFileSync(pathDbChat, 'utf-8').split('\n');
+};
+
 module.exports = {
     searchLoginAndPassword : searchLoginAndPassword,
-    setNewUser : setNewUser
+    setNewUser : setNewUser,
+    getMessage: getMessage,
+    setMessage : setMessage
 };
