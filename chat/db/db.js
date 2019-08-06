@@ -68,6 +68,19 @@ const checkClientLoggedIn = function (login, key){ //проверить, нах�
         return false;
 };
 
+const deleteClientLoggedIn = function (login, key, log = false){
+    let index;
+    for (let i = 0; i < clientsLoggedIn.length; i++){
+        if ((login === clientsLoggedIn[i].login) && (key === clientsLoggedIn[i].key)){
+            index = i;
+            break;
+        }
+    }
+    clientsLoggedIn.splice(index, 1);
+    if (log) console.log('deleted object: ' + login + ' key: ' + key + ' deleted index: ' + index); //отладочная печать
+};
+
+
 module.exports = {
     searchLoginAndPassword : searchLoginAndPassword,
     setNewUser : setNewUser,
