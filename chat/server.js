@@ -2,17 +2,17 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const { PORT } = require('./config');
 const db = require('./db/db');
-console.log();
-db.setNewUser('test', 'pas');
-function urlChecker(req, res, url = null) {
+const { PORT } = require('./config');
+
+function urlChecker(req, res, url = null) {//роутинг
 
     let filePath;
-    if (url !== null)
+    if (url !== null) {
         filePath = path.join(__dirname, 'public', url);
-    else
+    } else {
         filePath = path.join(__dirname, 'public', req.url === '/' ? 'login.html' : req.url);
+    }
 
     const ext = path.extname(filePath);
     let contentType = 'text/html';
@@ -24,8 +24,9 @@ function urlChecker(req, res, url = null) {
         default: contentType = 'text/html';
     }
 
-    if (!ext || (!url && (ext === '.html')))            // защита от обхода страницы регистрации\входа пользователя
+    if (!ext || (!url && (ext === '.html'))) {      // защита от обхода страницы регистрации\входа пользователя
         filePath = path.join(__dirname, 'public', 'login.html');
+    }
     fs.readFile(filePath, (err, content) =>{ //принимает запрос из браузера на страницу/файл, проверяет эту страницу\файл на сервере  и возвращает его (или ошибку)
         if (err) {
             fs.readFile(path.join(__dirname, 'public', 'error.html'), (err, data) =>{
@@ -38,9 +39,8 @@ function urlChecker(req, res, url = null) {
                     });
                     res.end(data);
                 }
-
             })
-        }else{
+        }else {
             res.writeHead(200, {
                 'Conent-Type': contentType
             });
