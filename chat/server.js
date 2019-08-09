@@ -3,9 +3,9 @@ const fs = require('fs');
 const path = require('path');
 
 const db = require('./db/db');
-const { PORT } = require('./config');
+const { PORT, devLog } = require('./config');
 
-function urlChecker(req, res, url = null) {//роутинг
+function urlChecker(req, res, url = null) { //роутинг
     let filePath;
     console.log("_______TEST::: req.url == " + req.url);
     if (url !== null) {
@@ -59,7 +59,26 @@ const server = http.createServer((req, res) => {
                 let dataTMP = data[i].split("=");
                 POST[dataTMP[0]] = dataTMP[1];
             }
-        })
+
+            if (req.url === '/login'){
+                if(db.searchLoginAndPassword(POST['login'], POST['password'], devLog)){
+                    db.setClientLoggedIn(POST['login'], POST['key'], devLog);
+                    urlChecker(req, res, 'chat.html');
+                }else{
+                    urlChecker(req, res, 'not_user.html'); //ПЕРЕДЕЛАТЬ
+                }
+
+            } else if (req.url === '/signup'){
+                if (!db.searchLogin(POST['login'], devLog)){
+                    db.setNewUser(POST['login'], POST['password'], devLog);
+                    urlChecker(req, res, 'login.html');
+                } else {
+                    urlChecker(req, res, 'not_user.html');
+                }
+            }
+        });
+    } else {
+        urlChecker(req, res);
     }
 });
 

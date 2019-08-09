@@ -82,6 +82,7 @@ const deleteClientLoggedIn = function (login, key, log = false){
 
 
 module.exports = {
+    searchLogin : searchLogin,
     searchLoginAndPassword : searchLoginAndPassword,
     setNewUser : setNewUser,
     getMessage: getMessage,
