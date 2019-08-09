@@ -1,8 +1,9 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const DB = require('./db/db');
+const db = new DB();
 
-const db = require('./db/db');
 const { PORT, devLog } = require('./config');
 
 function urlChecker(req, res, url = null) { //роутинг
