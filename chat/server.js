@@ -7,6 +7,7 @@ const { PORT } = require('./config');
 
 function urlChecker(req, res, url = null) {//роутинг
     let filePath;
+    console.log("_______TEST::: req.url == " + req.url);
     if (url !== null) {
         filePath = path.join(__dirname, 'public', url);
     } else {
@@ -49,7 +50,17 @@ function urlChecker(req, res, url = null) {//роутинг
 }
 
 const server = http.createServer((req, res) => {
-    urlChecker(req, res);
+    if (req.method === 'POST'){
+        req.on('data', data => {
+            let POST = {};
+            console.log(data);
+            data = data.toString().split('&');
+            for (let i = 0; i < data.length; i++){
+                let dataTMP = data[i].split("=");
+                POST[dataTMP[0]] = dataTMP[1];
+            }
+        })
+    }
 });
 
 server.listen(PORT, () => console.log(`Server has been started on ${PORT}`));
