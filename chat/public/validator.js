@@ -28,4 +28,23 @@ class Validator {
             }
         }
     };
+
+    isValid(elem) {
+        const method = this.options.method[elem.name];
+        if (method !== undefined) {
+            return method.every(item => this.validatorMethod[item[0]].bind(this)(elem, this.pattern[item[1]]));
+        }
+        return true;
+    };
+
+    showError(elem) {
+        elem.classList.remove('validator_success');
+        elem.classList.add('validator_error');
+        if (!elem.nextElementSibling.classList.contains('error-message')) {
+            const errorDiv = document.createElement('div');
+            errorDiv.textContent = this.options.method['error_mess'][elem.name] ? this.options.method['error_mess'][elem.name] : 'Error this input';
+            errorDiv.classList.add('error-message');
+            elem.insertAdjacentElement('afterend', errorDiv);
+        }
+    };
 }
