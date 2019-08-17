@@ -55,4 +55,15 @@ class Validator {
             elem.nextElementSibling.remove();
         }
     };
+
+    checkIt(event){
+        let target = event.target;
+        if (this.isValid(target)){
+            this.showSuccess(target);
+            this.error.delete(target);
+        } else {
+            this.showError(target);
+            this.error.add(target);
+        }
+    };
 }
