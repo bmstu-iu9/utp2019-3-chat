@@ -47,4 +47,12 @@ class Validator {
             elem.insertAdjacentElement('afterend', errorDiv);
         }
     };
+
+    showSuccess(elem) {
+        elem.classList.remove('validator_error');
+        elem.classList.add('validator_success');
+        if (elem.nextElementSibling.classList.contains('error-message')) {
+            elem.nextElementSibling.remove();
+        }
+    };
 }
