@@ -66,4 +66,10 @@ class Validator {
             this.error.add(target);
         }
     };
+
+    listenForm() {
+        this.elementsForm.forEach(elem => {
+            elem.addEventListener('change', this.checkIt.bind(this));
+        });
+    };
 }
