@@ -72,4 +72,12 @@ class Validator {
             elem.addEventListener('change', this.checkIt.bind(this));
         });
     };
+
+    listenBtn() {
+        this.elementsForm.forEach(elem => {
+            this.checkIt({target: elem});
+        });
+        return !!this.error.size;
+    };
+    
 }
