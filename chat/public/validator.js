@@ -79,5 +79,14 @@ class Validator {
         });
         return !!this.error.size;
     };
-    
+
+    deleteError(clearFields){
+        this.elementsForm.forEach(elem => {
+            elem.classList.remove('validator_error', 'validator_success');
+            if (clearFields) elem.value = '';
+            if (elem.nextElementSibling.classList.contains('error-message')) {
+                elem.nextElementSibling.remove();
+            }
+        })
+    }
 }
