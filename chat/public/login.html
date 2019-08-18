@@ -1,24 +1,42 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="validator.js"></script>
+
+    <title>Welcome</title>
+    <link rel="stylesheet" href="bootstrap-just-grid/bootstrap-grid.css">
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
-    <form action="" id="sign_up">
-        <input type="text" id="login" name="login"><br>
-        <input type="password" id="password" name="password"><br>
-        <input type="password" id="password_repeat"><br>
-        <button type="submit">sign up</button>
-    </form>
-    <script>
-        const validator = new Validator({
-            id : 'sign_up'
-        });
-    </script>
+    <div class="container">
+        <div class="row justify-content-center login-form">
+            <div class="col-auto form">
+                <div class="row justify-content-center">
+                    <div class="col-auto">
+                        <h1>Welcome chat system</h1>
+                    </div>
+                </div>
+                <div id="btn-change-block" class="row justify-content-center align-items-center change-block">
+                    <button class="active" id="signin">Sign In</button>
+                    <button id="signup">Sign Up</button>
+                </div>
+                <div id="form-signin" class="">
+                    <input id="form-signin-login" type="text" name="login" placeholder="login">
+                    <input id="form-signin-password" type="password" name="password" placeholder="password">
+                    <button id="form-signin-clickBtn" class="btn-form">sign in</button>
+                </div>
+                <div id="form-signup" class="hidden">
+                    <input id="form-signup-login" type="text" name="login" placeholder="login">
+                    <input id="form-signup-email" type="email" name="email" placeholder="email">
+                    <input id="form-signup-password" type="password" name="password" placeholder="password">
+                    <input id="form-signup-passwordrepeat" type="password" name="password_repeat" placeholder="repeat password">
+                    <button id="form-signup-clickBtn" class="btn-form">sign up</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
