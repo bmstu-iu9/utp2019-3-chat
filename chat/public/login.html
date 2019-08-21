@@ -20,23 +20,24 @@
                     </div>
                 </div>
                 <div id="btn-change-block" class="row justify-content-center align-items-center change-block">
-                    <button class="active" id="signin">Sign In</button>
-                    <button id="signup">Sign Up</button>
+                    <button class="active" id="signin" onclick="changeClassNameForm('form-signin', 'form-signup'), setActive('signup', 'signin')">Sign In</button>
+                    <button id="signup" onclick="changeClassNameForm('form-signup', 'form-signin'), setActive('signin', 'signup')">Sign Up</button>
                 </div>
                 <div id="form-signin" class="">
                     <input id="form-signin-login" type="text" name="login" placeholder="login">
                     <input id="form-signin-password" type="password" name="password" placeholder="password">
-                    <button id="form-signin-clickBtn" class="btn-form">sign in</button>
+                    <button id="form-signin-clickBtn" class="btn-form" onclick="send('form-signin')">sign in</button>
                 </div>
                 <div id="form-signup" class="hidden">
                     <input id="form-signup-login" type="text" name="login" placeholder="login">
                     <input id="form-signup-email" type="email" name="email" placeholder="email">
                     <input id="form-signup-password" type="password" name="password" placeholder="password">
                     <input id="form-signup-passwordrepeat" type="password" name="password_repeat" placeholder="repeat password">
-                    <button id="form-signup-clickBtn" class="btn-form">sign up</button>
+                    <button id="form-signup-clickBtn" class="btn-form" onclick="send('form-signup')">sign up</button>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>
