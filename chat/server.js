@@ -1,6 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+
 const DB = require('./db/db');
 const db = new DB();
 
@@ -81,9 +82,14 @@ const server = http.createServer((req, res) => {
                 }
             }
         });
+    } else if (req.url === '/usersOnline') {
+        body(res, {data : getUsersWSS()})
     } else {
         urlChecker(req, res);
     }
 });
+
+const Websocket = require('ws');
+const wss = new Websocket.Server({server});
 
 server.listen(PORT, () => console.log(`Server has been started on ${PORT}`));
