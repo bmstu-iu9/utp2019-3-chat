@@ -44,3 +44,6 @@ const validatorSignUp = new Validator({
         }
     }
 });
+
+validatorSignIn.listenForm();
+validatorSignUp.listenForm();
