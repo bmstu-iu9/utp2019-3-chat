@@ -48,9 +48,14 @@ const validatorSignUp = new Validator({
 validatorSignIn.listenForm();
 validatorSignUp.listenForm();
 
+let nowFormName = nameFormSignIn;
+
 function changeClassNameForm(...newOldId) {
     let _newIdName = document.getElementById(newOldId[0]);
     let _oldIdName = document.getElementById(newOldId[1]);
     _newIdName.className = '';
     _oldIdName.className = 'hidden';
+    validatorSignIn.deleteError(true);
+    validatorSignUp.deleteError(true);
+    nowFormName = newOldId[0];
 }
