@@ -91,6 +91,33 @@ const server = http.createServer((req, res) => {
 
 const Websocket = require('ws');
 const wss = new Websocket.Server({server});
+let clientsInWSS = [];
+
+function wsSystem (ws, data) {
+    if (db.checkClientLoggedIn(data['SYSTEM']['login'], data['SYSTEM']['key'], devLog)) {
+        if (!checkClientsInWSS(data['SYSTEM']['login'], data['SYSTEM']['key'])) {
+            //ws.id = getImoqueID();
+            ws.login = data['SYSTEM']['login'];
+            clientsInWSS.push({
+                login: ws.login,
+                key: data['SYSTEM']['key']
+            });
+            ws.send(JSON.stringify({
+                //userID; ws.id,
+                welcome: 'welcome',
+                oldMess: db.getMessage(data['SYSTEM']['room'])
+            }));
+        } else {
+            ws.send(JSON.stringify({
+                welcome: 'welcome back',
+                oldMess: db.getMessage(data['SYSTEM']['room'])
+            }));
+        }
+    } else {
+        ws.send(JSON.stringify('notUser'));
+        ws.close();
+    }
+}
 
 wss.on('connection', ws => {
     ws.on('message', message => {
