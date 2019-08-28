@@ -92,4 +92,15 @@ const server = http.createServer((req, res) => {
 const Websocket = require('ws');
 const wss = new Websocket.Server({server});
 
+wss.on('connection', ws => {
+    ws.on('message', message => {
+        let data = JSON.parse(message);
+        if (data['SYSTEM']) {
+            wsSystem(ws, data);
+        }
+
+
+    });
+});
+
 server.listen(PORT, () => console.log(`Server has been started on ${PORT}`));
