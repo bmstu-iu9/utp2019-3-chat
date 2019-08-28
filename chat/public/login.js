@@ -47,3 +47,10 @@ const validatorSignUp = new Validator({
 
 validatorSignIn.listenForm();
 validatorSignUp.listenForm();
+
+function changeClassNameForm(...newOldId) {
+    let _newIdName = document.getElementById(newOldId[0]);
+    let _oldIdName = document.getElementById(newOldId[1]);
+    _newIdName.className = '';
+    _oldIdName.className = 'hidden';
+}
