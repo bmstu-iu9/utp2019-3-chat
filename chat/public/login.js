@@ -81,4 +81,16 @@ function send(nameForm) {
     }else{
         check = validatorSignUp.listenBtn();
     }
+    if (!check) {
+        let body;
+        let _url;
+        if (nameForm === nameFormSignIn) {
+            body = {
+                login: document.getElementById(nameForm).children[0].value,
+                password: document.getElementById(nameForm).children[1].value,
+                key: localStorage.getItem('key') ? localStorage.getItem('key') : genKey()
+            };
+            _url = 'login';
+        }
+    }
 }
