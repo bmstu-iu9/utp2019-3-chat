@@ -59,3 +59,10 @@ function changeClassNameForm(...newOldId) {
     validatorSignUp.deleteError(true);
     nowFormName = newOldId[0];
 }
+
+function genKey() {
+    function s() {
+        return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+    }
+    return s() + s() + '-' + s() + s() + '-' + s() + s();
+}
