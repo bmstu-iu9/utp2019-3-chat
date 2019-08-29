@@ -81,16 +81,23 @@ function send(nameForm) {
     }else{
         check = validatorSignUp.listenBtn();
     }
-    if (!check) {
+    if (!check){
         let body;
         let _url;
-        if (nameForm === nameFormSignIn) {
+        if (nameForm === nameFormSignIn){
             body = {
                 login: document.getElementById(nameForm).children[0].value,
                 password: document.getElementById(nameForm).children[1].value,
-                key: localStorage.getItem('key') ? localStorage.getItem('key') : genKey()
+                key: localStorage.getItem('key') ? localStorage.getItem('key'): genKey()
             };
             _url = 'login';
+        } else {
+            body = {
+                login: document.getElementById(nameForm).children[0].value,
+                email: document.getElementById(nameForm).children[1].value,
+                password: document.getElementById(nameForm).children[2].value,
+            };
+            _url = 'signup';
         }
     }
 }
