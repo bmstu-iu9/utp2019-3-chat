@@ -73,3 +73,12 @@ function genKey() {
     }
     return s() + s() + '-' + s() + s() + '-' + s() + s();
 }
+
+function send(nameForm) {
+    let check;
+    if (nameForm === nameFormSignIn){
+        check = validatorSignIn.listenBtn();
+    }else{
+        check = validatorSignUp.listenBtn();
+    }
+}
