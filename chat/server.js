@@ -93,6 +93,15 @@ const Websocket = require('ws');
 const wss = new Websocket.Server({server});
 let clientsInWSS = [];
 
+function checkClientsInWSS(login, key) {
+    for (let client of clientsInWSS) {
+        if (clients.login === login && client.key === key){
+            return true;
+        }
+    }
+    return false;
+}
+
 function wsSystem (ws, data) {
     if (db.checkClientLoggedIn(data['SYSTEM']['login'], data['SYSTEM']['key'], devLog)) {
         if (!checkClientsInWSS(data['SYSTEM']['login'], data['SYSTEM']['key'])) {
