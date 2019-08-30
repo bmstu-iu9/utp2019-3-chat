@@ -128,11 +128,18 @@ function wsSystem (ws, data) {
     }
 }
 
+function wsClose(ws, data) {
+    deleteClientsInWSS(data['CLOSE']['login'], data['CLOSE']['key']);
+    ws.close();
+}
+
 wss.on('connection', ws => {
     ws.on('message', message => {
         let data = JSON.parse(message);
         if (data['SYSTEM']) {
             wsSystem(ws, data);
+        } else if (data['CLOSE']) {
+            wsClose(ws, data);
         }
 
 
