@@ -99,5 +99,29 @@ function send(nameForm) {
             };
             _url = 'signup';
         }
+        fetch(URL + _url, {
+            method: 'POST',
+            body: JSON.stringify(body)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (_url === 'login'){
+                    if (data['data']){
+                        localStorage.setItem('login', body.login);
+                        localStorage.setItem('key', body.key);
+                        window.location.href = URL + 'chat';
+                    } else {
+                        alert('this user not found in system');
+                    }
+                } else {
+                    if (data['data']) {
+                        alert('please login');
+                        setActive('signup', 'signin');
+                        changeClassNameForm('form-signin', 'form-signup');
+                    } else {
+                        alert('such name already exists');
+                    }
+                }
+            })
     }
 }
