@@ -106,6 +106,10 @@ function deleteClientsInWSS(login, key){
     clientsInWSS.splice(clientsInWSS.findIndex(client => client.login === login && client.key === key), 1);
 }
 
+function getUsersWSS() {
+    return clientsInWSS.map(item => item.login);
+}
+
 function wsSystem (ws, data) {
     if (db.checkClientLoggedIn(data['SYSTEM']['login'], data['SYSTEM']['key'], devLog)) {
         if (!checkClientsInWSS(data['SYSTEM']['login'], data['SYSTEM']['key'])) {
