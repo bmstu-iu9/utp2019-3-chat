@@ -125,3 +125,9 @@ function send(nameForm) {
             })
     }
 }
+
+document.getElementById(nowFormName).addEventListener('keyup', event => {
+    if (event.keyCode === 13) {
+        send(nowFormName);
+    }
+});
