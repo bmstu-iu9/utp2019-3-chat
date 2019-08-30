@@ -137,6 +137,12 @@ function wsClose(ws, data) {
     ws.close();
 }
 
+function wsLogout(ws, data) {
+    db.deleteClientLoggedIn(data['LOGOUT']['login'], data['LOGOUT']['key'], devLog);
+    deleteClientsInWSS(data['CLOSE']['login'], data['CLOSE']['key']);
+    ws.close();
+}
+
 wss.on('connection', ws => {
     ws.on('message', message => {
         let data = JSON.parse(message);
@@ -144,6 +150,8 @@ wss.on('connection', ws => {
             wsSystem(ws, data);
         } else if (data['CLOSE']) {
             wsClose(ws, data);
+        } else if (data['LOGOUT']) {
+            wsLogout(ws, data);
         }
 
 
