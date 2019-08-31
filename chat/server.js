@@ -156,9 +156,30 @@ wss.on('connection', ws => {
             wsClose(ws, data);
         } else if (data['LOGOUT']) {
             wsLogout(ws, data);
+        } else if (data['SENDMESS']) {
+            db.setMessage(JSON.stringify(data['SENDMESS']));
+            if (data['SENDMESS']['room'] !== 'all') {
+                wss.clients.forEach(client => {
+                    if (client.login === data ['SENDMESS']['room']) {
+                        if (client.readyState === Websocket.OPEN) {
+                            client.send(JSON.stringify(data['SENDMESS']))
+                            //console.log(client.readyState === client.OPEN)
+                        }
+                    }
+                });
+            } else {
+                wss.clients.forEach(client => {
+                    if (client.readyState === Websocket.OPEN) {
+                        client.send(JSON.stringify(data['SENDMESS']));
+                        //console.log(client.readyState === client.OPEN)
+                    }
+                });
+            }
+        } else if (data['OLDMESS']) {
+            ws.send(JSON.stringify({
+                oldMess: db.getMessage(data['OLDMESS']['room'])
+            }));
         }
-
-
     });
 });
 
