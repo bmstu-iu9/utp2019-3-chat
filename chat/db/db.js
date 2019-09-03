@@ -55,8 +55,14 @@ class DB {
     };
 
     setClientLoggedIn(login, key, log = false) { //занести клиента в массив clientsLoggedIn (массив пользователей, которые в онлайне)
-        this.clientsLoggedIn.push(
-            {
+        for (let item of this.clientsLoggedIn) {
+            if (item.login === login && item.key === key) {
+                if (log)
+                    console.log(this.clientsLoggedIn);
+                return;
+            }
+        }
+        this.clientsLoggedIn.push( {
                 login: login,
                 key: key
             }

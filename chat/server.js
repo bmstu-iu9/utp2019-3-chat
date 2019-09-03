@@ -1,6 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+
 const DB = require('./db/db');
 const db = new DB();
 
@@ -81,9 +82,105 @@ const server = http.createServer((req, res) => {
                 }
             }
         });
+    } else if (req.url === '/usersOnline') {
+        body(res, {data : getUsersWSS()})
     } else {
         urlChecker(req, res);
     }
+});
+
+const Websocket = require('ws');
+const wss = new Websocket.Server({server});
+let clientsInWSS = [];
+
+function checkClientsInWSS(login, key) {
+    for (let client of clientsInWSS) {
+        if (clients.login === login && client.key === key){
+            return true;
+        }
+    }
+    return false;
+}
+
+function deleteClientsInWSS(login, key){
+    clientsInWSS.splice(clientsInWSS.findIndex(client => client.login === login && client.key === key), 1);
+}
+
+function getUsersWSS() {
+    return clientsInWSS.map(item => item.login);
+}
+
+function wsSystem (ws, data) {
+    if (db.checkClientLoggedIn(data['SYSTEM']['login'], data['SYSTEM']['key'], devLog)) {
+        if (!checkClientsInWSS(data['SYSTEM']['login'], data['SYSTEM']['key'])) {
+            //ws.id = getImoqueID();
+            ws.login = data['SYSTEM']['login'];
+            clientsInWSS.push({
+                login: ws.login,
+                key: data['SYSTEM']['key']
+            });
+            ws.send(JSON.stringify({
+                //userID; ws.id,
+                welcome: 'welcome',
+                oldMess: db.getMessage(data['SYSTEM']['room'])
+            }));
+        } else {
+            ws.send(JSON.stringify({
+                welcome: 'welcome back',
+                oldMess: db.getMessage(data['SYSTEM']['room'])
+            }));
+        }
+    } else {
+        ws.send(JSON.stringify('notUser'));
+        ws.close();
+    }
+}
+
+function wsClose(ws, data) {
+    deleteClientsInWSS(data['CLOSE']['login'], data['CLOSE']['key']);
+    ws.close();
+}
+
+function wsLogout(ws, data) {
+    db.deleteClientLoggedIn(data['LOGOUT']['login'], data['LOGOUT']['key'], devLog);
+    deleteClientsInWSS(data['CLOSE']['login'], data['CLOSE']['key']);
+    ws.close();
+}
+
+wss.on('connection', ws => {
+    ws.on('message', message => {
+        let data = JSON.parse(message);
+        if (data['SYSTEM']) {
+            wsSystem(ws, data);
+        } else if (data['CLOSE']) {
+            wsClose(ws, data);
+        } else if (data['LOGOUT']) {
+            wsLogout(ws, data);
+        } else if (data['SENDMESS']) {
+            db.setMessage(JSON.stringify(data['SENDMESS']));
+            if (data['SENDMESS']['room'] !== 'all') {
+                wss.clients.forEach(client => {
+                    if (client.login === data ['SENDMESS']['room']) {
+                        if (client.readyState === Websocket.OPEN) {
+                            client.send(JSON.stringify(data['SENDMESS']))
+                            //console.log(client.readyState === client.OPEN)
+                        }
+                    }
+                });
+            } else {
+                wss.clients.forEach(client => {
+                    if (client.readyState === Websocket.OPEN) {
+                        client.send(JSON.stringify(data['SENDMESS']));
+                        //console.log(client.readyState === client.OPEN)
+                    }
+                });
+            }
+        } else if (data['OLDMESS']) {
+            ws.send(JSON.stringify({
+                oldMess: db.getMessage(data['OLDMESS']['room'])
+            }));
+        }
+    });
 });
 
 server.listen(PORT, () => console.log(`Server has been started on ${PORT}`));
