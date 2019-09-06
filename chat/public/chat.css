@@ -80,3 +80,6 @@ textarea {
 textarea::-webkit-scrollbar {
     width: 0;
 }
+.hidden {
+    display: none;
+}
