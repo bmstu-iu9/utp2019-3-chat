@@ -11,6 +11,14 @@ const menu = document.getElementById('menu');
 const chatList = document.getElementById('chat-list');
 const nameDiv = document.querySelector('.chat-header-name');
 
+let showMenuTmp = false;
+let logout;
+let typeMess;
+let name = 'all';
+
+nameDiv.innerHTML = `${name}`;
+// console.log(nameDiv);
+
 function WS() {
     const ws = new WebSocket(urlWS);
     // сокеты нотивно поддерживаются в браузерах
@@ -18,6 +26,20 @@ function WS() {
     // Протокол WebSocket — это независимый протокол, основанный на протоколе TCP.
     // Он делает возможным более тесное взаимодействие между браузером и веб-сайтом,
     // способствуя распространению интерактивного содержимого и созданию приложений реального времени.
+    let nameChat = 'all';
+
+    ws.onopen = () => {
+        ws.send(JSON.stringify({
+            'SYSTEM': {
+                'login': login,
+                'key': key,
+                'room': nameChat
+            }
+        }));
+        console.log('ONLINE');
+        // setStatus('ONLINE')
+    };
+
 }
 
 function sendAuthData() {
