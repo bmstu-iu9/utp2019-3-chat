@@ -83,3 +83,12 @@ textarea::-webkit-scrollbar {
 .hidden {
     display: none;
 }
+.users-list-item {
+    border: 1px solid #4a4a4a;
+    background-color: #4a4a4a;
+}
+.users-list-item:hover {
+    cursor: pointer;
+    background-color: #676767;
+    color: #00ef00;
+}
