@@ -97,3 +97,9 @@ textarea::-webkit-scrollbar {
     background-color: rgb(29, 29, 29);
     width: 100%;
 }
+.user-list {
+    color: white;
+    border: 1px solid black;
+    overflow: auto;
+    padding: 0;
+}
