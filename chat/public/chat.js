@@ -28,6 +28,21 @@ function WS() {
     // способствуя распространению интерактивного содержимого и созданию приложений реального времени.
     let nameChat = 'all';
 
+    ws.onmessage = response => {
+        let data = JSON.parse(response.data);
+        if (data !== 'notUser') {
+            if (data['oldMess']) {
+                for (let i = 0; i < data.oldMess.length; i++) {
+                    let dataMes = JSON.parse(data.oldMess[i]);
+                    if (dataMes) printMessage(dataMes);
+                }
+            }
+            if (data['mes']) printMessage(data);
+        } else {
+            window.location.href = URL;
+        }
+    };
+
     ws.onopen = () => {
         ws.send(JSON.stringify({
             'SYSTEM': {
