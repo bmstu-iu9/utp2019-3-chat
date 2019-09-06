@@ -3,6 +3,13 @@ const urlWS = 'ws://localhost:3000/';
 const login = localStorage.getItem('login');
 const key = localStorage.getItem('key');
 
+const listForm = document.getElementById('list-chat-container');
+const listChat = document.querySelector('.list-chat');
+const userList = document.getElementById('user-list');
+const input = document.getElementById('textarea');
+const menu = document.getElementById('menu');
+const chatList = document.getElementById('chat-list');
+const nameDiv = document.querySelector('.chat-header-name');
 
 function WS() {
     const ws = new WebSocket(urlWS);
