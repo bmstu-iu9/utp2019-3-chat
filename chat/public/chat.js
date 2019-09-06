@@ -13,3 +13,22 @@ function WS() {
     // способствуя распространению интерактивного содержимого и созданию приложений реального времени.
 }
 
+function sendAuthData() {
+    fetch(URL + 'chat', {
+        method: 'POST',
+        body: JSON.stringify({
+            login: localStorage.getItem('login'),
+            key: localStorage.getItem('key')
+        })
+    })
+        .then(res => res.json())
+        .then(data => {
+            if (data['data']) {
+                WS();
+            } else {
+                window.location.href = URL + 'login'
+            }
+        })
+}
+
+sendAuthData();
