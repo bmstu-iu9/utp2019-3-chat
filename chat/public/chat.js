@@ -31,6 +31,7 @@ function printMessage(value) {
     listChat.scrollTo(0, listChat.scrollHeight);
 }
 
+
 function WS() {
     const ws = new WebSocket(urlWS);
     // сокеты нотивно поддерживаются в браузерах
@@ -39,6 +40,13 @@ function WS() {
     // Он делает возможным более тесное взаимодействие между браузером и веб-сайтом,
     // способствуя распространению интерактивного содержимого и созданию приложений реального времени.
     let nameChat = 'all';
+
+    typeMess = function (chatName) {
+        nameChat = chatName;
+        clearListChat();
+        showMenu();
+        getMess(nameChat);
+    };
 
     ws.onmessage = response => {
         let data = JSON.parse(response.data);
