@@ -33,6 +33,14 @@ function showMenu() {
     }
 }
 
+function printUsers(value) {
+    let users = `<div class="users-list-item" onclick="typeMess('all')">all</div>`;
+    value.forEach(item => {
+        users += `<div class="users-list-item" onclick="typeMess('${item}')">${item}</div>`
+    });
+    userList.innerHTML = users;
+}
+
 function printMessage(value) {
     let div = document.createElement("div");
     // div.className = 'list-chat-item';
