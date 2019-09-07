@@ -13,7 +13,7 @@ body {
     width: 100%;
 }
 .list-chat {
-    height: calc(100vh - 113px);
+    height: calc(100vh - 105px);
     width: 100%;
     overflow: auto;
     padding-right: 5px;
@@ -35,12 +35,18 @@ body {
     color: #00cd00;
     padding-bottom: 5px;
 }
-.chat-name {
-    color: aliceblue;
-    text-align: center;
-    height: 3vh;
+.chat-header {
+    height: 50px;
     border: 1px solid #4a4a4a;
     background-color: #4a4a4a;
+
+}
+.chat-header-name {
+    color: aliceblue;
+    text-align: center;
+    border: 1px solid #4a4a4a;
+}
+.chat-header-bt-logout {
 
 }
 .list-chat-mes_left {
@@ -69,8 +75,31 @@ textarea {
     outline: none;
     padding: 5px 10px 0 10px;
     width: 100%;
-    height: 8vh;
+    height: 50px;
 }
 textarea::-webkit-scrollbar {
     width: 0;
+}
+.hidden {
+    display: none;
+}
+.users-list-item {
+    border: 1px solid #4a4a4a;
+    background-color: #4a4a4a;
+}
+.users-list-item:hover {
+    cursor: pointer;
+    background-color: #676767;
+    color: #00ef00;
+}
+.menu {
+    height: 100vh;
+    background-color: rgb(29, 29, 29);
+    width: 100%;
+}
+.user-list {
+    color: white;
+    border: 1px solid black;
+    overflow: auto;
+    padding: 0;
 }
