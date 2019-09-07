@@ -19,6 +19,20 @@ let name = 'all';
 nameDiv.innerHTML = `${name}`;
 // console.log(nameDiv);
 
+function showMenu() {
+    if (!showMenuTmp) {
+        showMenuTmp = true;
+        menu.classList.remove('hidden');
+        chatList.classList.add('hidden');
+
+        fetch(URL + 'usersOnline', {method: 'GET'})
+            .then(res => res.json())
+            .then(data => {
+                printUsers(data['data']);
+            })
+    }
+}
+
 function printMessage(value) {
     let div = document.createElement("div");
     // div.className = 'list-chat-item';
