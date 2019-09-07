@@ -31,6 +31,10 @@ function printMessage(value) {
     listChat.scrollTo(0, listChat.scrollHeight);
 }
 
+function clearListChat() {
+    const removeElements = (elms) => elms.forEach(el => el.remove());
+    removeElements( document.querySelectorAll(".list-chat-item") );
+}
 
 function WS() {
     const ws = new WebSocket(urlWS);
