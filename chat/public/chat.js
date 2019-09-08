@@ -47,7 +47,7 @@ function printUsers(value) {
 
 function printMessage(value) {
     let div = document.createElement("div");
-    // div.className = 'list-chat-item';
+    div.className = 'list-chat-item';
     div.innerHTML = `<div class="list-chat-mes ${value['login'] === login ? 'list-chat-mes_right': 'list-chat-mes_left'}">
                         <div class="user-name">${value['login']}</div>
                         <div class="">${value['mes']}</div>
@@ -95,11 +95,13 @@ function WS() {
     });
 
     const ws = new WebSocket(urlWS);
+
     // сокеты нотивно поддерживаются в браузерах
     // используют протокол ws
     // Протокол WebSocket — это независимый протокол, основанный на протоколе TCP.
     // Он делает возможным более тесное взаимодействие между браузером и веб-сайтом,
     // способствуя распространению интерактивного содержимого и созданию приложений реального времени.
+
     let nameChat = 'all';
 
     function getMess (chatName) {
