@@ -63,6 +63,37 @@ function clearListChat() {
 }
 
 function WS() {
+
+    input.addEventListener('keydown', event => {
+        if (event.keyCode === 9) {
+            event.preventDefault();
+        }
+    });
+
+    let pressed = new Set();
+
+    document.addEventListener('keydown', (event) => {
+        pressed.add(event.keyCode);
+        for (let code of [16, 13]) {
+            if (!pressed.has(code)) return;
+        }
+        sendMes();
+        pressed.clear();
+    });
+
+    document.addEventListener('keyup', () => {
+        pressed.clear();
+    });
+
+    window.addEventListener("beforeunload", () => {
+        ws.send(JSON.stringify({
+            'CLOSE': {
+                'login': login,
+                'key': key
+            }
+        }));
+    });
+
     const ws = new WebSocket(urlWS);
     // сокеты нотивно поддерживаются в браузерах
     // используют протокол ws
