@@ -30,6 +30,10 @@ function showMenu() {
             .then(data => {
                 printUsers(data['data']);
             })
+    } else {
+        showMenuTmp = false;
+        menu.classList.add('hidden');
+        chatList.classList.remove('hidden');
     }
 }
 
@@ -66,6 +70,16 @@ function WS() {
     // Он делает возможным более тесное взаимодействие между браузером и веб-сайтом,
     // способствуя распространению интерактивного содержимого и созданию приложений реального времени.
     let nameChat = 'all';
+
+    function getMess (chatName) {
+        ws.send(JSON.stringify({
+            'OLDMESS': {
+                'login': login,
+                'key': key,
+                'room': chatName
+            }
+        }))
+    }
 
     typeMess = function (chatName) {
         nameChat = chatName;
