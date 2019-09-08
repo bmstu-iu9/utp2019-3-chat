@@ -50,7 +50,7 @@ function printMessage(value) {
     div.className = 'list-chat-item';
     div.innerHTML = `<div class="list-chat-mes ${value['login'] === login ? 'list-chat-mes_right': 'list-chat-mes_left'}">
                         <div class="user-name">${value['login']}</div>
-                        <div class="">${value['mes']}</div>
+                        <div class="text-message">${value['mes']}</div>
                      </div>
                     `;
     listForm.appendChild(div);

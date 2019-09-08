@@ -1,7 +1,8 @@
 body {
     padding: 0;
     margin: 0;
-    background: linear-gradient(135deg, #044f48, #1d3b2a);
+    //background: linear-gradient(135deg, #044f48, #1d3b2a);
+    background: #c7b39b url(images/background/5.jpg); background-size: 100%; /* Цвет фона и путь к файлу */
 }
 .group {
     border: 1px solid black;
@@ -13,7 +14,7 @@ body {
     width: 100%;
 }
 .list-chat {
-    height: calc(100vh - 105px);
+    height: calc(100vh - 155px);
     width: 100%;
     overflow: auto;
     padding-right: 5px;
@@ -26,7 +27,8 @@ body {
     border-radius: 5px;
     padding: 5px;
     max-width: 80%;
-    min-width: 35%;
+    min-width: 60%;
+    min-height: 55px;
     color: aliceblue;
     word-wrap: break-word;
     clear: both;
@@ -34,6 +36,12 @@ body {
 .user-name {
     color: #00cd00;
     padding-bottom: 5px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+.text-message {
+    padding-left: 11px;
+    padding-bottom: 7px;
 }
 .chat-header {
     height: 50px;
@@ -52,19 +60,22 @@ body {
 .list-chat-mes_left {
     left: 10px;
     float: left;
+    margin-left: 15px;
+
 }
 .list-chat-mes_right {
     right: 10px;
     float: right;
+    margin-right: 15px;
 }
 .list-chat::-webkit-scrollbar {
-    width: 5px;
+    width: 7px;
     background: rgb(41,41,41);
 }
 ::-webkit-scrollbar-thumb {
     width: 15px;
     background: #6c6c6c;
-    border-radius: 5px;
+    border-radius: 12px;
 }
 textarea {
     color: aliceblue;
@@ -75,7 +86,7 @@ textarea {
     outline: none;
     padding: 5px 10px 0 10px;
     width: 100%;
-    height: 50px;
+    height: 100px;
 }
 textarea::-webkit-scrollbar {
     width: 0;
