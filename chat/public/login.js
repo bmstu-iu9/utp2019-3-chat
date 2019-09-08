@@ -48,7 +48,7 @@ const validatorSignUp = new Validator({
 validatorSignIn.listenForm();
 validatorSignUp.listenForm();
 
-function setActive(...oldNewId){
+function setActive(...oldNewId) {
     let _oldIdName = document.getElementById(oldNewId[0]);
     let _newIdName = document.getElementById(oldNewId[1]);
     _oldIdName.className = '';
@@ -62,8 +62,8 @@ function changeClassNameForm(...newOldId) {
     let _oldIdName = document.getElementById(newOldId[1]);
     _newIdName.className = '';
     _oldIdName.className = 'hidden';
-    validatorSignIn.deleteError(true);
     validatorSignUp.deleteError(true);
+    validatorSignIn.deleteError(true);
     nowFormName = newOldId[0];
 }
 
@@ -76,19 +76,19 @@ function genKey() {
 
 function send(nameForm) {
     let check;
-    if (nameForm === nameFormSignIn){
+    if (nameForm === nameFormSignIn) {
         check = validatorSignIn.listenBtn();
-    }else{
+    } else {
         check = validatorSignUp.listenBtn();
     }
-    if (!check){
+    if (!check) {
         let body;
         let _url;
-        if (nameForm === nameFormSignIn){
+        if (nameForm === nameFormSignIn) {
             body = {
                 login: document.getElementById(nameForm).children[0].value,
                 password: document.getElementById(nameForm).children[1].value,
-                key: localStorage.getItem('key') ? localStorage.getItem('key'): genKey()
+                key: localStorage.getItem('key') ? localStorage.getItem('key') : genKey()
             };
             _url = 'login';
         } else {
@@ -105,8 +105,8 @@ function send(nameForm) {
         })
             .then(res => res.json())
             .then(data => {
-                if (_url === 'login'){
-                    if (data['data']){
+                if (_url === 'login') {
+                    if (data['data']) {
                         localStorage.setItem('login', body.login);
                         localStorage.setItem('key', body.key);
                         window.location.href = URL + 'chat';
