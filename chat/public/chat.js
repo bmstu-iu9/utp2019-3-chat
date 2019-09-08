@@ -99,6 +99,21 @@ function WS() {
         window.location.href = URL + 'login'
     };
 
+    function sendMes() {
+        if (input.value !== '') {
+            let data = JSON.stringify({
+                'SENDMESS': {
+                    'room': nameChat,
+                    'login': login,
+                    'key': key,
+                    'mes': input.value,
+                }
+            });
+            ws.send(data);
+        }
+        input.value = '';
+    }
+
     ws.onmessage = response => {
         let data = JSON.parse(response.data);
         if (data !== 'notUser') {
