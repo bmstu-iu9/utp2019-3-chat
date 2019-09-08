@@ -9,21 +9,29 @@
 </head>
 <body>
 <div class="container">
-    <div class="row">
-        <div class="col group d-none d-md-block d-lg-block d-xl-block">
-            <div class="row">USERS</div>
-            <div class="row">LIST</div>
+    <div class="row justify-content-center">
+        <div id="menu" class="col-6 menu hidden">
+            <button onclick="showMenu()">|||</button>
+            <div class="row">
+                <div id="user-list" class="col user-list">
+                </div>
+            </div>
         </div>
-        <div class="col group">
-            <div class="chat-name">friend name: TEST</div>
+        <div id="chat-list" class="col-6 group">
+            <div class="chat-header">
+                <div class="chat-header-name"></div>
+                <button class="chat-header-bt-logout" onclick="logout()">logout</button>
+                <button onclick="showMenu()">|||</button>
+            </div>
             <div class="list-chat">
-                <div class="" id="list-chat-container"></div>
+                <div class="" id="list-chat-container">
+                </div>
             </div>
             <textarea id="textarea" placeholder="Type message..."></textarea>
         </div>
     </div>
 </div>
 
-
+<script src="chat.js"></script>
 </body>
 </html>
