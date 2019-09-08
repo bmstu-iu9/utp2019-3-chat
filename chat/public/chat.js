@@ -16,7 +16,7 @@ let logout;
 let typeMess;
 let name = 'all';
 
-nameDiv.innerHTML = `${name}`;
+nameDiv.innerHTML = `${login}`;
 // console.log(nameDiv);
 
 function showMenu() {
@@ -40,7 +40,7 @@ function showMenu() {
 function printUsers(value) {
     let users = `<div class="users-list-item" onclick="typeMess('all')">all</div>`;
     value.forEach(item => {
-        users += `<div class="users-list-item" onclick="typeMess('${item}')">${item}</div>`
+        users += `<div class="users-list-item">${item}</div>`
     });
     userList.innerHTML = users;
 }

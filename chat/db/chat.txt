@@ -1,0 +1,11 @@
+{"room":"all","login":"admin1","key":"ff9335ec-fc2144aa-36ab443a","mes":"assssss\n\n"}
+{"room":"all","login":"admin2","key":"ff9335ec-fc2144aa-36ab443a","mes":"y3gtf783yh90t4u3"}
+{"room":"all","login":"11","key":"ff9335ec-fc2144aa-36ab443a","mes":"5y245y234t5234"}
+{"room":"all","login":"admin1","key":"ff9335ec-fc2144aa-36ab443a","mes":"345gh54y245y"}
+{"room":"all","login":"admin2","key":"ff9335ec-fc2144aa-36ab443a","mes":"\n3y13p-y-13j0g"}
+{"room":"all","login":"admin1","key":"ff9335ec-fc2144aa-36ab443a","mes":"uikutiltui,lu\n"}
+{"room":"all","login":"admin2","key":"ff9335ec-fc2144aa-36ab443a","mes":"werfgqwerfg"}
+{"room":"all","login":"admin1","key":"68965ea1-07fd602e-143307b6","mes":"12222222222222"}
+{"room":"all","login":"admin1","key":"38770b62-ca40fdee-00aee2fa","mes":"erjkgiurgioehrioghe3rgkwerjkg["}
+{"room":"all","login":"admin1","key":"38770b62-ca40fdee-00aee2fa","mes":"\nПривет админ2! Когда бухать пойдем?\n"}
+{"room":"all","login":"admin2","key":"38770b62-ca40fdee-00aee2fa","mes":"Здрарова! Когда жена отпустит!"}

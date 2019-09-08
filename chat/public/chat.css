@@ -5,8 +5,10 @@ body {
     background: #c7b39b url(images/background/5.jpg); background-size: 100%; /* Цвет фона и путь к файлу */
 }
 .group {
+
+    margin-top: 40px;
     border: 1px solid black;
-    height: 100vh;
+    height: 90vh;
     padding: 0;
     background-color: rgb(29, 29, 29);
 }
@@ -14,7 +16,7 @@ body {
     width: 100%;
 }
 .list-chat {
-    height: calc(100vh - 155px);
+    height: calc(90vh - 185px);
     width: 100%;
     overflow: auto;
     padding-right: 5px;
@@ -24,7 +26,7 @@ body {
     border: 1px solid #343434;
     background: #343434;
     margin-bottom: 15px;
-    border-radius: 5px;
+    border-radius: 8px;
     padding: 5px;
     max-width: 80%;
     min-width: 60%;
@@ -44,7 +46,8 @@ body {
     padding-bottom: 7px;
 }
 .chat-header {
-    height: 50px;
+    border-radius: 8px;
+    height: 80px;
     border: 1px solid #4a4a4a;
     background-color: #4a4a4a;
 
@@ -55,7 +58,11 @@ body {
     border: 1px solid #4a4a4a;
 }
 .chat-header-bt-logout {
-
+    float: right;
+}
+.chat-header-bt-usersOnline {
+    margin-top: 10px;
+    float: left;
 }
 .list-chat-mes_left {
     left: 10px;
@@ -78,6 +85,8 @@ body {
     border-radius: 12px;
 }
 textarea {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
     color: aliceblue;
     resize: none;
     background-color: #4a4a4a;
@@ -97,6 +106,7 @@ textarea::-webkit-scrollbar {
 .users-list-item {
     border: 1px solid #4a4a4a;
     background-color: #4a4a4a;
+    text-align: center;
 }
 .users-list-item:hover {
     cursor: pointer;
@@ -104,7 +114,8 @@ textarea::-webkit-scrollbar {
     color: #00ef00;
 }
 .menu {
-    height: 100vh;
+    margin-top: 40px;
+    height: 90vh;
     background-color: rgb(29, 29, 29);
     width: 100%;
 }
