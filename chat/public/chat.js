@@ -88,6 +88,17 @@ function WS() {
         getMess(nameChat);
     };
 
+    logout = function () {
+        localStorage.clear();
+        ws.send(JSON.stringify({
+            'LOGOUT': {
+                'login': login,
+                'key': key
+            }
+        }));
+        window.location.href = URL + 'login'
+    };
+
     ws.onmessage = response => {
         let data = JSON.parse(response.data);
         if (data !== 'notUser') {
@@ -115,6 +126,7 @@ function WS() {
         // setStatus('ONLINE')
     };
 
+    ws.onclose = () => console.log('OFFLINE'); //setStatus('OFFLINE');
 }
 
 function sendAuthData() {
