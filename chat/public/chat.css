@@ -1,42 +1,50 @@
 body {
+
     padding: 0;
     margin: 0;
     //background: linear-gradient(135deg, #044f48, #1d3b2a);
-    background: #c7b39b url(images/background/5.jpg); background-size: 100%; /* Цвет фона и путь к файлу */
+    background: #111010 url(images/background/5.jpg); background-size: 100%; /* Цвет фона и путь к файлу */
 }
 .group {
 
-    margin-top: 40px;
+    border-radius: 10px;
+    margin-top: 20px;
     border: 1px solid black;
-    height: 90vh;
+    height: 95vh;
     padding: 0;
-    background-color: rgb(29, 29, 29);
+    background-color: rgba(29, 29, 29, 0.6);
+
 }
 .input {
     width: 100%;
 }
 .list-chat {
-    height: calc(90vh - 185px);
+
+    height: calc(95vh - 165px);
     width: 100%;
     overflow: auto;
     padding-right: 5px;
     padding-left: 5px;
 }
 .list-chat-mes {
-    border: 1px solid #343434;
+    border: 0px solid #343434;
     background: #343434;
-    margin-bottom: 15px;
-    border-radius: 8px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 6px;
     padding: 5px;
     max-width: 80%;
-    min-width: 60%;
-    min-height: 55px;
+    min-width: 50%;
+    min-height: 50px;
+    font-size: 16px;
     color: aliceblue;
     word-wrap: break-word;
     clear: both;
+
 }
 .user-name {
-    color: #00cd00;
+    color: #c39595;
+    font-size: 18px;
     padding-bottom: 5px;
     margin-left: 5px;
     margin-top: 5px;
@@ -46,32 +54,57 @@ body {
     padding-bottom: 7px;
 }
 .chat-header {
-    border-radius: 8px;
-    height: 80px;
-    border: 1px solid #4a4a4a;
-    background-color: #4a4a4a;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 60px;
+    border: 1px solid #141313;
+    background-color: #141313;
 
 }
 .chat-header-name {
+    margin-top: 5px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     color: aliceblue;
     text-align: center;
-    border: 1px solid #4a4a4a;
+    color: #917851;
+    font-family: Broadway;
+    font-size: 40px;
+
 }
 .chat-header-bt-logout {
+    background: #141414;
+    border-radius: 4px;
+    margin-top: 13px;
+    margin-right: 4px;
+    padding-left: 11px;
+    padding-right: 11px;
     float: right;
 }
+.chat-header-bt-logout:hover {
+    background: #3d3d3d;
+}
 .chat-header-bt-usersOnline {
-    margin-top: 10px;
+    background: #141414;
+    border-radius: 4px;
+    margin-top: 13px;
+    margin-left: 4px;
+    padding-left: 11px;
+    padding-right: 11px;
     float: left;
 }
+.chat-header-bt-usersOnline:hover {
+    background: #3d3d3d;
+}
 .list-chat-mes_left {
-    left: 10px;
+    left: 8px;
     float: left;
     margin-left: 15px;
 
 }
 .list-chat-mes_right {
-    right: 10px;
+    background: #202020;
+    right: 8px;
     float: right;
     margin-right: 15px;
 }
@@ -85,17 +118,18 @@ body {
     border-radius: 12px;
 }
 textarea {
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 11px;
+    border-bottom-right-radius: 11px;
     color: aliceblue;
+    font-size: 20px;
     resize: none;
-    background-color: #4a4a4a;
-    border-color: #4a4a4a;
-    border-top: 1px solid black;
+    background-color: #111010;
+    border-color: #111010;
+    border-top: 0px solid black;
     outline: none;
-    padding: 5px 10px 0 10px;
+    padding: 14px 15px 15px 15px;
     width: 100%;
-    height: 100px;
+    height: 103px;
 }
 textarea::-webkit-scrollbar {
     width: 0;
@@ -111,15 +145,20 @@ textarea::-webkit-scrollbar {
 .users-list-item:hover {
     cursor: pointer;
     background-color: #676767;
-    color: #00ef00;
+    color: aliceblue;
 }
 .menu {
+    text-align: center;
+    color: #fffbc7;
+    font-size: 20px;
+    border-radius: 10px;
     margin-top: 40px;
     height: 90vh;
     background-color: rgb(29, 29, 29);
     width: 100%;
 }
 .user-list {
+
     color: white;
     border: 1px solid black;
     overflow: auto;

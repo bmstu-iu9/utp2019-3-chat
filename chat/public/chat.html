@@ -11,6 +11,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div id="menu" class="col-6 menu hidden">
+            users online:
             <div class="row">
                 <div id="user-list" class="col user-list">
                 </div>
@@ -18,15 +19,15 @@
         </div>
         <div id="chat-list" class="col-6 group">
             <div class="chat-header">
-                <button class="chat-header-bt-logout" onclick="logout()">logout</button>
-                <button class = "chat-header-bt-usersOnline" onclick="showMenu()">users online</button>
+                <button class="chat-header-bt-logout" onclick="logout()"><img src="images/icons/PNG/white/png/round_delete_icon&24.png" title="logout" /></button>
+                <button class = "chat-header-bt-usersOnline" onclick="showMenu()"><img src="images/icons/PNG/white/png/user_icon&24.png" title="users online" /></button>
                 <div class="chat-header-name"></div>
             </div>
             <div class="list-chat">
                 <div class="" id="list-chat-container">
                 </div>
             </div>
-            <textarea id="textarea" placeholder="Type message..."></textarea>
+            <textarea id="textarea" placeholder="Type message and press shift+enter..."></textarea>
         </div>
     </div>
 </div>
