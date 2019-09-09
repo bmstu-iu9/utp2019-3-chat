@@ -12,7 +12,7 @@ body {
     border: 1px solid black;
     height: 95vh;
     padding: 0;
-    background-color: rgba(29, 29, 29, 0.6);
+    background-color: rgba(29, 29, 29, 1);
 
 }
 .input {
@@ -28,7 +28,7 @@ body {
 }
 .list-chat-mes {
     border: 0px solid #343434;
-    background: #343434;
+    background: #404040;
     margin-top: 5px;
     margin-bottom: 5px;
     border-radius: 6px;
@@ -103,7 +103,7 @@ body {
 
 }
 .list-chat-mes_right {
-    background: #202020;
+    background: #2e2e2e;
     right: 8px;
     float: right;
     margin-right: 15px;
