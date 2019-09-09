@@ -153,9 +153,10 @@ textarea::-webkit-scrollbar {
     font-size: 20px;
     border-radius: 10px;
     margin-top: 40px;
-    height: 90vh;
-    background-color: rgb(29, 29, 29);
+    height: 93vh;
+    background-color: rgba(29, 29, 29, 0.9);
     width: 100%;
+
 }
 .user-list {
 
