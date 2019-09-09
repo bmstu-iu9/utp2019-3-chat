@@ -1,4 +1,5 @@
 class Validator {
+
     constructor(options) {
         this.options = options;
         this.form = document.getElementById(options.id);
@@ -14,7 +15,7 @@ class Validator {
     }
 
     validatorMethod = {
-        notEmpty(elem){
+        notEmpty(elem) {
             return elem.value !== '';
         },
         pattern(elem, pattern) {
@@ -22,8 +23,8 @@ class Validator {
         },
         password_repeat(elem) {
             for (let i in this.elementsForm) {
-                if (this.elementsForm[i].name === 'password'){
-                    return this.elementsForm[i].value ===elem.value;
+                if (this.elementsForm[i].name === 'password') {
+                    return this.elementsForm[i].value === elem.value;
                 }
             }
         }
@@ -32,7 +33,7 @@ class Validator {
     isValid(elem) {
         const method = this.options.method[elem.name];
         if (method !== undefined) {
-            return method.every(item => this.validatorMethod[item[0]].bind(this)(elem, this.pattern[item[1]]));
+            return method.every( item => this.validatorMethod[item[0]].bind(this)(elem, this.pattern[item[1]]));
         }
         return true;
     };
@@ -56,7 +57,7 @@ class Validator {
         }
     };
 
-    checkIt(event){
+    checkIt(event) {
         let target = event.target;
         if (this.isValid(target)){
             this.showSuccess(target);
@@ -80,7 +81,7 @@ class Validator {
         return !!this.error.size;
     };
 
-    deleteError(clearFields){
+    deleteError(clearFields) {
         this.elementsForm.forEach(elem => {
             elem.classList.remove('validator_error', 'validator_success');
             if (clearFields) elem.value = '';
@@ -88,5 +89,5 @@ class Validator {
                 elem.nextElementSibling.remove();
             }
         })
-    }
+    };
 }
