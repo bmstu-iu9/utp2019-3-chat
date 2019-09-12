@@ -1,3 +1,14 @@
 body {
     background: #111010 url(images/error.jpg); background-size: 100%; /* Цвет фона и путь к файлу */
 }
+
+a.backHomeBTN {
+    background: url(images/errorBackHomeBTN.jpg); /* Путь к файлу с исходным рисунком  */
+    display: block; /*  Рисунок как блочный элемент */
+    margin-top: 28%;
+    width: 287px; /* Ширина рисунка */
+    height: 92px; /*  Высота рисунка */
+}
+a.backHomeBTN:hover {
+    background: url(images/errorBackHomeBTN2.jpg); /* Путь к файлу с заменяемым рисунком  */
+}
