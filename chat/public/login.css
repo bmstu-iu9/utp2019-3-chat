@@ -1,14 +1,20 @@
 :root {
-    --btn-color: darkgreen;
-    --btn-border-color: green;
+    --btn-color: #917851;
+    --btn-border-color: #917851;
     --btn-text-color: aliceblue;
     --text-color: black;
 }
 
 body {
-    background-color: #d3d3d3;
+    margin-left: 40px;
+    color: #917851;
+    font-size: 22px;
+    font-family: Broadway;
+    background: #111010 url(images/background/5.jpg); background-size: 100%; /* Цвет фона и путь к файлу */
 }
 input {
+    border-radius: 4px;
+    text-align: center;
     display: block;
     margin-bottom: 10px;
     padding: 10px;
@@ -23,7 +29,8 @@ input {
     display: none;
 }
 .active {
-    border: 1px solid yellow;
+    background: #141414;
+    border-radius: 4px;
 }
 .display-off {
     display: none;
@@ -32,8 +39,8 @@ input {
     top: 20%;
 }
 .form {
-    border: 1px solid var(--btn-border-color);
-    border-radius: 5px;
+    border: 0px solid var(--btn-border-color);
+    border-radius: 11px;
 }
 .btn-form {
     width: 100%;
@@ -51,6 +58,11 @@ input {
 }
 .validator_error {
     border: 2px solid red;
+}
+.error-message{
+    width: 80%;
+    font-size: 15px;
+    color: #ff3a26;
 }
 .validator_success {
     border: 2px solid green;
