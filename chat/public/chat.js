@@ -48,8 +48,9 @@ function printUsers(value) {
 function printMessage(value) {
     let div = document.createElement("div");
     div.className = 'list-chat-item';
+    let date = new Date();
     div.innerHTML = `<div class="list-chat-mes ${value['login'] === login ? 'list-chat-mes_right': 'list-chat-mes_left'}">
-                        <div class="user-name">${value['login']}</div>
+                        <div class="user-name"><font size="3">${date.getHours()}:${(date.getMinutes() < 10) ? "0"+date.getMinutes() : date.getMinutes()}</font> &nbsp;${value['login']} </div>
                         <div class="text-message">${value['mes']}</div>
                      </div>
                     `;
